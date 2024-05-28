@@ -48,15 +48,12 @@ function initializeServiceWorker() {
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", async () => {
       try {
-        const register = await navigator.serviceWorker.register(
-          "./../../sw.js",
-          {},
-        );
+        const register = await navigator.serviceWorker.register("./sw.js");
         if (register.active) {
           console.log("Service worker successfully registered");
         }
       } catch (err) {
-        console.log("Service worker failed to register");
+        console.log("Service worker failed to register", err);
       }
     });
   }
